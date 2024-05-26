@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class charactermovemant : MonoBehaviour
+public class movement3D : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private float moveSpeed = 5.0f;
+
+    private Vector3 moveDirection;
+
+    private CharacterController characterController;
+
+    private void Awake()
     {
-        
+        characterController = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+    }
+
+    public void MoveTO(Vector3 direction)
+    {
+        moveDirection = direction;
     }
 }
+
