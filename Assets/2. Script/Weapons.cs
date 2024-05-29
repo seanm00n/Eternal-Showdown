@@ -9,7 +9,7 @@ public abstract class Weapons// : MonoBehaviour//, IWeapons
     protected int useCost;
     protected int attackPoint;
     protected string weaponName;
-    public UnityEvent OnWeaponBreak = new UnityEvent();
+    public UnityEvent OnWeaponBreak;
 
     public virtual void Attack()
     {

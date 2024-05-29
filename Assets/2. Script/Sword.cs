@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Sword : Weapons
 {
@@ -10,6 +11,7 @@ public class Sword : Weapons
         useCost = 0;
         attackPoint = 10;
         weaponName = "Sword";
+        OnWeaponBreak = new UnityEvent();
     }
 
     public override void Attack()
