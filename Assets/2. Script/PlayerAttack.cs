@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,21 +9,21 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        weapon = new Fists();
-        weapon.OnWeaponBreak += SetFists;
+        SetWeapon(new Fists());
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            weapon = new Sword();
+            SetWeapon(new Sword());
             Debug.Log("Weapon Changed: Sword");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            weapon = new Gun();
+            SetWeapon(new Gun());
+            
             Debug.Log("Weapon Changed: Gun");
         }
 
@@ -32,10 +33,15 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    void SetWeapon(Weapons newWeapon)
+    {
+        weapon = newWeapon;
+        weapon.OnWeaponBreak.AddListener(SetFists); // 이벤트 추가
+    }
+
     void SetFists()
     {
         weapon = new Fists();
-        Debug.Log("Weapon Changed: Fists");
     }
 
 }
