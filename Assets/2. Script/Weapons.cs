@@ -8,15 +8,18 @@ public abstract class Weapons : MonoBehaviour//, IWeapons
     protected int useCost;
     protected int attackPoint;
     protected string weaponName;
-    public delegate void OnRunOut(); // µ®∏Æ∞‘¿Ã∆Æ
+    public delegate void WeaponBreakAction();
+    public event WeaponBreakAction OnWeaponBreak;
     public virtual void Attack()
     {
         durability -= useCost;
         if(durability < 0)
         {
-            //
+            Debug.Log(weaponName + " Broke");
+            OnWeaponBreak?.Invoke();
+            return;
         }
-
+        
         Debug.Log(weaponName + " Attack");
     }
 }

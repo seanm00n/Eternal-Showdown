@@ -5,33 +5,37 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     Weapons weapon;
+
     private void Start()
     {
         weapon = new Fists();
+        weapon.OnWeaponBreak += SetFists;
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            SetWeapon(new Sword());
+            weapon = new Sword();
             Debug.Log("Weapon Changed: Sword");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            SetWeapon(new Gun());
+            weapon = new Gun();
             Debug.Log("Weapon Changed: Gun");
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             weapon.Attack();
-            //
         }
     }
-    void SetWeapon(Weapons newWeapon)
+
+    void SetFists()
     {
-        weapon = newWeapon;
-        // 콜백함수 
+        weapon = new Fists();
+        Debug.Log("Weapon Changed: Fists");
     }
+
 }

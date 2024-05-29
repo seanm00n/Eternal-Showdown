@@ -14,6 +14,7 @@ public class Gun : Weapons
 
     public override void Attack()
     {
+        // do something
         base.Attack();
     }
 }
