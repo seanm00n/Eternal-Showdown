@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     float speed = 6.0f;
     float gravity = -9.81f;
     float jumpHeight = 1.0f;
-    float health = 200;
+    //float health = 200;
     bool isGround;
     Vector3 velocity;
 
